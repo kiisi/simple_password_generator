@@ -149,7 +149,11 @@ function generatePassword() {
   // generate a random number between min and max inclusively
   let random = Math.floor(Math.random() * (max + 1 - min)) + min
 
+  
   let arr = getPasswordOptions()
+  if(arr.length === 0){
+    return "Select at least one password criteria"
+  }
   arr = shuffle(arr)
   
 
