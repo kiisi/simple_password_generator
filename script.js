@@ -91,6 +91,27 @@ var upperCasedCharacters = [
 // Function to prompt user for password options
 function getPasswordOptions() {
 
+  let arr = []
+
+  let specialCharactersOption = confirm("Should Generated password contain special characters: ")
+  let numericCharactersOption = confirm("Should Generated password contain numeric characters: ")
+  let lowerCasedCharactersOption = confirm("Should Generated password contain lowercase characters: ")
+  let upperCasedCharactersOption = confirm("Should Generated password contain uppercase characters: ")
+  
+  if(specialCharactersOption){
+    arr.push(specialCharacters)
+  }
+  if(numericCharactersOption){
+    arr.push(numericCharacters)
+  }
+  if(lowerCasedCharactersOption){
+    arr.push(lowerCasedCharacters)
+  }
+  if(upperCasedCharactersOption){
+    arr.push(upperCasedCharacters)
+  }
+
+  return arr
 }
 
 // Shuffle array
@@ -128,7 +149,7 @@ function generatePassword() {
   // generate a random number between min and max inclusively
   let random = Math.floor(Math.random() * (max + 1 - min)) + min
 
-  let arr = [specialCharacters, numericCharacters, lowerCasedCharacters, upperCasedCharacters]
+  let arr = getPasswordOptions()
   arr = shuffle(arr)
   
 
